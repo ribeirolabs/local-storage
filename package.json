@@ -1,7 +1,7 @@
 {
   "name": "@ribeirolabs/local-storage",
   "version": "0.0.0-development",
-  "description": "Local storage helper for set/get values, with value conversion and expiration",
+  "description": "Local storage helper for set/get values, with value conversion",
   "main": "dist/index.js",
   "scripts": {
     "commit": "cz",
