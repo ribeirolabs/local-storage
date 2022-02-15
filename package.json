@@ -32,7 +32,6 @@
   "homepage": "https://github.com/ribeirolabs/local-storage#readme",
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",
-    "@semantic-release/git": "10.0.1",
     "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "12.1.2",
     "@types/jest": "27.4.0",
@@ -61,7 +60,7 @@
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
       "@semantic-release/npm",
-      "@semantic-release/git"
+      "@semantic-release/github"
     ],
     "pkgRoot": "dist"
   },
