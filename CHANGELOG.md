@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/ribeirolabs/local-storage/compare/v1.0.0...v1.0.1) (2022-02-15)
+
+
+### Bug Fixes
+
+* **publish:** set dist as the package root ([ad89fde](https://github.com/ribeirolabs/local-storage/commit/ad89fdee9f9e56b2bd1765ffb6f6ae4e0058e72e))
+
 # 1.0.0 (2022-02-15)
 
 
