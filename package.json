@@ -62,7 +62,8 @@
       "@semantic-release/changelog",
       "@semantic-release/npm",
       "@semantic-release/git"
-    ]
+    ],
+    "pkgRoot": "dist"
   },
   "publishConfig": {
     "access": "public"
