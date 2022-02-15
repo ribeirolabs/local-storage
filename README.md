@@ -52,7 +52,6 @@ function Component() {
     <input name="name" value={value} onChange={e => setValue(e.target.value)} />
   );
 }
-
 ```
 
 ### useSetLocalStorage `(name, value) -> void`
@@ -73,5 +72,41 @@ function Component() {
     <input name="name" value={value} onChange={e => setValue(e.target.value)} />
   );
 }
-
 ```
+
+## Browser
+
+### index.browser.js
+
+It adds a global `ribeirolabs.localStorage` with all the methods.
+
+```html
+<script src="https://unpkg.com/@ribeirolabs/local-storage/index.browser.js"></script>
+
+<script>
+  ribeirolabs.localStorage.setLocalStorage('name', 'John Doe');
+
+  console.log(
+    ribeirolabs.localStorage.getLocalStorage('name', '')
+  );
+
+  ribeirolabs.localStorage.removeLocalStorage('name');
+</script>
+```
+
+### index.mjs
+
+To work with modules
+
+```html
+<script type="module">
+  import { setLocalStorage, getLocalStorage } from "https://unpkg.com/@ribeirolabs/local-storage/index.mjs";
+
+  setLocalStorage('name', 'John Doe');
+
+  console.log(
+    getLocalStorage('name', '')
+  );
+</script>
+```
+
