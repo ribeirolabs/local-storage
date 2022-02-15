@@ -1,6 +1,6 @@
 {
   "name": "@ribeirolabs/local-storage",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Local storage helper for set/get values, with value conversion",
   "main": "dist/index.js",
   "scripts": {
