@@ -1,18 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getLocalStorage, setLocalStorage } from '..';
 
+type Setter<Value> = (value: Value | ((value: Value) => Value)) => void;
+
 export function useLocalStorage<Value>(
   name: string,
   fallback: Value,
-): [Value, (value: Value) => void] {
+): [Value, Setter<Value>] {
   const [state, setState] = useState(() => getLocalStorage(name, fallback));
 
   const fallbackRef = useRef(fallback);
 
-  const set = useCallback(
-    (value: Value) => {
-      setLocalStorage(name, value);
-      setState(value);
+  const set = useCallback<Setter<Value>>(
+    value => {
+      const currentValue = getLocalStorage(name, fallbackRef.current);
+
+      const nextValue = value instanceof Function ? value(currentValue) : value;
+
+      setLocalStorage(name, nextValue);
+      setState(nextValue);
     },
     [name],
   );
