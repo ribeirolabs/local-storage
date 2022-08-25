@@ -7,7 +7,15 @@ export function useLocalStorage<Value>(
   name: string,
   fallback: Value,
 ): [Value, Setter<Value>] {
-  const [state, setState] = useState(() => getLocalStorage(name, fallback));
+  const [state, setState] = useState(fallback);
+
+  useEffect(() => {
+    const value = getLocalStorage(name, null);
+
+    if (value) {
+      setState(value as Value);
+    }
+  }, []);
 
   const fallbackRef = useRef(fallback);
 
