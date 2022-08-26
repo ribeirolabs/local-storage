@@ -15,6 +15,7 @@ describe('useLocalStorage', () => {
         <div>
           <span>name: {value}</span>
           <button onClick={() => setValue('Doe')}>change</button>
+          <button onClick={() => setValue('Jhon')}>reset</button>
         </div>
       );
     }
@@ -23,18 +24,23 @@ describe('useLocalStorage', () => {
 
     // Initial render with fallback value
     expect(screen.queryByText('name: Jhon')).toBeInTheDocument();
-    expect(window.localStorage.getItem('name')).toEqual('Jhon');
+    expect(window.localStorage.getItem('name')).toBeUndefined();
 
-    screen.getByRole('button').click();
+    screen.getByText('change').click();
 
     expect(screen.queryByText('name: Doe')).toBeInTheDocument();
     expect(window.localStorage.getItem('name')).toEqual('Doe');
+
+    screen.getByText('reset').click();
+
+    expect(screen.queryByText('name: Jhon')).toBeInTheDocument();
+    expect(window.localStorage.getItem('name')).toEqual('Jhon');
 
     unmount();
     render(<Component />);
 
     // Inital render with localStorage value
-    expect(screen.queryByText('name: Doe')).toBeInTheDocument();
+    expect(screen.queryByText('name: Jhon')).toBeInTheDocument();
   });
 
   it('accepts function as setter', () => {
@@ -55,7 +61,7 @@ describe('useLocalStorage', () => {
 
     // Initial render with fallback value
     expect(screen.queryByText('name: Jhon')).toBeInTheDocument();
-    expect(window.localStorage.getItem('name')).toEqual('Jhon');
+    expect(window.localStorage.getItem('name')).toBeUndefined();
 
     screen.getByRole('button').click();
 

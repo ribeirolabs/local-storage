@@ -3,6 +3,8 @@ import { getLocalStorage, setLocalStorage } from '..';
 
 type Setter<Value> = (value: Value | ((value: Value) => Value)) => void;
 
+const PRIMITIVE = /number|string|boolean/;
+
 export function useLocalStorage<Value>(
   name: string,
   fallback: Value,
@@ -34,7 +36,7 @@ export function useLocalStorage<Value>(
   useEffect(() => {
     const value = getLocalStorage(name, fallbackRef.current);
 
-    if (value === fallbackRef.current) {
+    if (value === fallbackRef.current && !PRIMITIVE.test(typeof value)) {
       set(value);
     } else {
       setState(value);
