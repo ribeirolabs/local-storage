@@ -3,6 +3,22 @@
   "version": "1.0.0",
   "description": "Local storage helper for set/get values, with value conversion",
   "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./index.mjs"
+      },
+      "require": "./index.js"
+    },
+    "./react": {
+      "import": {
+        "types": "./react/index.d.ts",
+        "default": "./react/index.mjs"
+      },
+      "require": "./react/index.js"
+    }
+  },
   "scripts": {
     "commit": "cz",
     "prebuild": "rimraf dist",
